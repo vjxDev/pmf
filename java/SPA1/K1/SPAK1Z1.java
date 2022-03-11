@@ -1,5 +1,5 @@
 
-public class Z1 {
+public class SPAK1Z1 {
 
   public static void kreirajFajl(String f) {
     Svetovid.out(f).println("Prvi red");

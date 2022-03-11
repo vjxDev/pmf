@@ -8,7 +8,7 @@ public class TV4Z1 {
     b = a;
     c = b;
     d = (String[]) c;
-    Svetovid.out.println(a == m);
+    Svetovid.out.println(a == m, d);
 
   }
 }

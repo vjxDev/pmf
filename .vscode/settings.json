@@ -3,14 +3,7 @@
     "include": [
       "lib/**/*.jar"
     ],
-    "exclude": [
-      "CrnaStrana",
-      "Nikad neces da znas šta je crna strana 😈"
-    ]
   },
-  "java.project.resourceFilters": [
-    "CrnaStrana"
-  ],
   "files.defaultLanguage": "java",
   "java.project.sourcePaths": [
     "java/UUP/Kolokvijum3",
