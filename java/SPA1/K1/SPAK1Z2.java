@@ -18,7 +18,7 @@ public class SPAK1Z2 {
         Svetovid.in(path).close();
         return null;
       }
-      knjige.dodajKnjigu(new Knjiga(naslov, prezime, godina));
+      knjige.dodaj(new Knjiga(naslov, prezime, godina));
       Svetovid.out.println(String.format("%s %s %s", naslov, prezime, godina));
     }
     Svetovid.in(path).close();
@@ -51,10 +51,10 @@ class Knjige {
     String naslov = Svetovid.in.readToken("Unesite ime nove knjige");
     String prezime = Svetovid.in.readToken("Unesite prezime pisca");
     int godina = Svetovid.in.readInt("Unesite godinu izdanja");
-    this.dodajKnjigu(new Knjiga(naslov, prezime, godina));
+    this.dodaj(new Knjiga(naslov, prezime, godina));
   }
 
-  public void dodajKnjigu(Knjiga nova) {
+  public void dodaj(Knjiga nova) {
     if (brojKnjiga > SPAK1Z2.MAX_DUZINA) {
       Svetovid.out.print("Doslite do maksimalnog broja knjiga");
       return;

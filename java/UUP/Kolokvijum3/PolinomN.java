@@ -1,6 +1,6 @@
 class Polinom {
   static final int maxSt = 100;
-  double[] k = new double[maxSt+1];
+  double[] k = new double[maxSt + 1];
   int st = -1;
 }
 
@@ -9,12 +9,12 @@ enum Znak {
 }
 
 class PolinomN {
- 
+
   /* Anulira polinom p */
   static void anuliraj(Polinom p) {
     if (p != null) {
       p.st = -1;
-      for (int i = 0; i <= p.maxSt; i++)
+      for (int i = 0; i <= Polinom.maxSt; i++)
         p.k[i] = 0.0;
     }
   }
@@ -25,7 +25,7 @@ class PolinomN {
       return null;
     Polinom q = new Polinom();
     q.st = p.st;
-    for (int i = 0; i <= p.maxSt; i++)
+    for (int i = 0; i <= Polinom.maxSt; i++)
       q.k[i] = p.k[i];
     return q;
   }
@@ -34,13 +34,14 @@ class PolinomN {
   static void nadjiStepen(Polinom p) {
     if (p != null) {
       final double eps = 1.0E-5;
-      p.st = p.maxSt;
-      while (p.st > -1 && (Math.abs(p.k[p.st]-0.0) < eps)) {
-        /* Postavlja stepen polinoma za prvi koeficijent
-           razlicit od 0, ili na -1 ako su svi koeficijenti
-           0. Pri poredjenju sa nulom pitamo se da li
-           je koeficijent dovoljno blizu nule
-        */
+      p.st = Polinom.maxSt;
+      while (p.st > -1 && (Math.abs(p.k[p.st] - 0.0) < eps)) {
+        /*
+         * Postavlja stepen polinoma za prvi koeficijent
+         * razlicit od 0, ili na -1 ako su svi koeficijenti
+         * 0. Pri poredjenju sa nulom pitamo se da li
+         * je koeficijent dovoljno blizu nule
+         */
         p.st--;
       }
     }
@@ -67,9 +68,9 @@ class PolinomN {
     int pom;
     double koef;
     do {
-      System.out.print("Stepen polinoma (>= 0, <= " + p.maxSt + "): ");
+      System.out.print("Stepen polinoma (>= 0, <= " + Polinom.maxSt + "): ");
       pom = Svetovid.in.readInt();
-    } while (pom < 0 || pom > p.maxSt);
+    } while (pom < 0 || pom > Polinom.maxSt);
     p.st = pom;
     do {
       System.out.print("Koeficijent uz x^" + p.st + ": ");
@@ -78,8 +79,7 @@ class PolinomN {
     p.k[p.st] = koef;
     if (p.st == 0 && p.k[p.st] == 0.0) {
       p.st = -1;
-    }
-    else {
+    } else {
       for (int i = p.st - 1; i >= 0; i--) {
         System.out.print("Koeficijent uz x^" + i + ": ");
         koef = Svetovid.in.readDouble();
@@ -112,7 +112,7 @@ class PolinomN {
               System.out.print(Math.abs(p.k[i]));
             if (i > 1)
               System.out.print("x^" + i);
-   	        else if (i == 1)
+            else if (i == 1)
               System.out.print("x");
           }
         }
@@ -123,8 +123,7 @@ class PolinomN {
           else
             System.out.print("-" + Math.abs(p.k[0]));
         }
-      }
-      else { /* ako polinom nema x */
+      } else { /* ako polinom nema x */
         if (p.k[0] < 0.0)
           System.out.print("-" + Math.abs(p.k[0]));
         else
@@ -132,11 +131,11 @@ class PolinomN {
       }
     }
   }
-  
+
   private static Polinom sab(Polinom p1, Polinom p2, Znak op) {
     if (p1 == null || p2 == null)
       return null;
-    Polinom zbir = new Polinom();    
+    Polinom zbir = new Polinom();
     if (p1.st > p2.st)
       zbir.st = p1.st;
     else
@@ -148,8 +147,10 @@ class PolinomN {
       for (int i = 0; i <= zbir.st; i++)
         zbir.k[i] = p1.k[i] - p2.k[i];
     nadjiStepen(zbir);
-    /* Nalazi stepen zbira za slucaj da su se
-       neki koeficijenti anulirali sabiranjem */
+    /*
+     * Nalazi stepen zbira za slucaj da su se
+     * neki koeficijenti anulirali sabiranjem
+     */
     return zbir;
   }
 
@@ -188,7 +189,7 @@ class PolinomN {
       proizvod.st = proizvodSt;
       for (int i = 0; i <= p1.st; i++)
         for (int j = 0; j <= p2.st; j++)
-          proizvod.k[i+j] += p1.k[i] * p2.k[j];
+          proizvod.k[i + j] += p1.k[i] * p2.k[j];
     }
     return proizvod;
   }
@@ -214,7 +215,7 @@ class PolinomN {
       }
       nadjiStepen(ostatak);
     }
-    Polinom[] rezultat = {kolicnik, ostatak};
+    Polinom[] rezultat = { kolicnik, ostatak };
     return rezultat;
   }
 }
