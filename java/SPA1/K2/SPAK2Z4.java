@@ -1,14 +1,15 @@
 
 public class SPAK2Z4 {
   public static void main(String[] args) {
-    SpisakFilmova_SPAtK2Z4 spisak = new SpisakFilmova_SPAtK2Z4();
+    SpisakFilmova_SPAK2Z4 spisak = new SpisakFilmova_SPAK2Z4();
 
     spisak.addFilm("Lepa brena");
     spisak.addFilm("Zikina dinastija");
     spisak.addFilm("Test 1");
 
     spisak.addActorToFilm("proba 1", "Test 1");
-    spisak.addActorToFilm("proba 2", "Zikina dinastija");
+    Svetovid.out.println(spisak.addActorToFilm("proba 2", "Zikina dinastija"));
+    Svetovid.out.println(spisak.addActorToFilm("proba 2", "Zikina dinastija"));
     spisak.addActorToFilm("proba 3", "Lepa brena");
     spisak.addActorToFilm("proba 3", "Zikina dinastija");
 
@@ -20,13 +21,13 @@ public class SPAK2Z4 {
   }
 }
 
-class SpisakFilmova_SPAtK2Z4 {
+class SpisakFilmova_SPAK2Z4 {
   Film first = null;
 
   public Film findFilm(String filmName) {
     Film el = first;
     while (el != null) {
-      if (el.imeFilma.equals(filmName))
+      if (el.filmName.equals(filmName))
         return el;
       el = el.succ;
     }
@@ -51,7 +52,7 @@ class SpisakFilmova_SPAtK2Z4 {
     if (f == null)
       return false;
 
-    return f.glumci.addActor(actorName);
+    return f.actors.addActor(actorName);
   }
 
   public int deliteFilmsWithActor(String actorName) {
@@ -59,7 +60,7 @@ class SpisakFilmova_SPAtK2Z4 {
 
     Film el = first;
     while (el != null) {
-      if (el.glumci.deleteActor(actorName))
+      if (el.actors.deleteActor(actorName))
         br++;
       el = el.succ;
     }
@@ -68,12 +69,12 @@ class SpisakFilmova_SPAtK2Z4 {
 
   class Film {
     Film succ;
-    String imeFilma;
-    ActorList glumci;
+    String filmName;
+    ActorList actors;
 
-    public Film(String imeFilma) {
-      this.imeFilma = imeFilma;
-      glumci = new ActorList();
+    public Film(String filmName) {
+      this.filmName = filmName;
+      actors = new ActorList();
     }
   }
 
@@ -82,10 +83,10 @@ class SpisakFilmova_SPAtK2Z4 {
     Film el = first;
 
     if (el != null) {
-      s += el.imeFilma + ": " + el.glumci + '\n';
+      s += el.filmName + ": " + el.actors + '\n';
       el = el.succ;
       while (el != null) {
-        s += el.imeFilma + ": " + el.glumci + '\n';
+        s += el.filmName + ": " + el.actors + '\n';
         el = el.succ;
       }
     }
