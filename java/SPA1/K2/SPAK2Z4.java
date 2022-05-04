@@ -79,14 +79,14 @@ class SpisakFilmova_SPAK2Z4 {
   }
 
   public String toString() {
-    String s = "Filmovi [ \n";
+    String s = "Filmovi [";
     Film el = first;
 
     if (el != null) {
-      s += el.filmName + ": " + el.actors + '\n';
+      s += el.filmName + ": " + el.actors;
       el = el.succ;
       while (el != null) {
-        s += el.filmName + ": " + el.actors + '\n';
+        s += ", " + el.filmName + ": " + el.actors;
         el = el.succ;
       }
     }
@@ -154,7 +154,7 @@ class SpisakFilmova_SPAK2Z4 {
           el = el.succ;
         }
       }
-      return s + "]";
+      return s + " ]";
     }
 
     class Actor {
@@ -172,4 +172,76 @@ class SpisakFilmova_SPAK2Z4 {
     }
   }
 
+}
+
+// create a linked list of pornstars
+
+class LinkedList {
+  private Node first;
+
+  public LinkedList() {
+    first = null;
+  }
+
+  public boolean add(String value) {
+    Node node = new Node(value);
+    node.succ = first;
+    first = node;
+    return true;
+  }
+
+  public boolean delete(String value) {
+    Node current, prev;
+    current = first;
+    prev = null;
+    while (current != null && !current.value.equals(value)) {
+      prev = current;
+      current = current.succ;
+    }
+    if (current != null) {
+      prev.succ = current.succ;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean exists(String value) {
+    Node current = first;
+    while (current != null) {
+      if (current.value.equals(value))
+        return true;
+      current = current.succ;
+    }
+    return false;
+  }
+
+  public String toString() {
+    String s = "Pornstars [ ";
+    Node el = first;
+
+    if (el != null) {
+      s += el.value;
+      el = el.succ;
+      while (el != null) {
+        s += ", " + el.value;
+        el = el.succ;
+      }
+    }
+    return s + " ]";
+  }
+
+  class Node {
+    String value;
+    Node succ;
+
+    public Node(String value) {
+      this.value = value;
+      this.succ = null;
+    }
+
+    public String toString() {
+      return value;
+    }
+  }
 }
