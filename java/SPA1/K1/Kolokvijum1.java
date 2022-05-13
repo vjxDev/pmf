@@ -9,7 +9,7 @@ public class Kolokvijum1 {
     String i = Svetovid.in.readToken("naziv:");
     double km = Svetovid.in.readDouble("dužina u kilometrima:");
     String s = Svetovid.in.readToken("sliv kom pripada:");
-    int brojDrzava = Svetovid.in.readInt("broj država kroz koje protiče:");
+    int brojDrzava = Svetovid.in.readInt("broj država kroz koje protice:");
     mreza.dodajReku(i, km, s, brojDrzava);
 
     Svetovid.out.println("Unesite podatke o dva sliva koja zelite da uporedite");

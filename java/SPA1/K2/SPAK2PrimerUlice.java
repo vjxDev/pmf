@@ -198,15 +198,17 @@ class SPAK2PrimerUlice_Ulica {
       if (first == null) {
         return null;
       }
-      if (first.succ == null) {
-        return first;
-      }
+      Person last = first;
       Person curr = first;
+      if (first.succ == null) {
+        first = null;
+        return last;
+      }
 
       while (curr.succ.succ != null) {
         curr = curr.succ;
       }
-      Person last = curr.succ;
+      last = curr.succ;
       curr.succ = null;
 
       return last;
