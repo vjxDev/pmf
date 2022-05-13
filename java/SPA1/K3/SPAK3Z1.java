@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class SPAK3Z1 {
 
-  public static ArrayList<String> readListFromFile(String f) {
-    ArrayList<String> list = new ArrayList<String>();
+  public static LinkedList<String> readListFromFile(String f) {
+    LinkedList<String> list = new LinkedList<String>();
     if (!Svetovid.testIn(f))
       return null;
     while (Svetovid.in(f).hasMore()) {
@@ -15,7 +16,7 @@ public class SPAK3Z1 {
     return list;
   }
 
-  public static boolean printListToFile(ArrayList<String> list, String f) {
+  public static boolean printListToFile(LinkedList<String> list, String f) {
     if (!Svetovid.testOut(f)) {
       return false;
     }
@@ -55,10 +56,15 @@ public class SPAK3Z1 {
     list.remove(s);
     Svetovid.out.println(list);
 
-    ArrayList<String> listFromFile = readListFromFile("java/f/imena.txt");
+    LinkedList<String> listFromFile = readListFromFile("java/f/imena.txt");
     Svetovid.out.println(listFromFile);
 
-    printListToFile(list, "java/f/randomlista.txt");
+    for (String string : list) {
+      listFromFile.add(string);
+    }
+    Svetovid.out.println(listFromFile);
+
+    printListToFile(listFromFile, "java/f/randomlista.txt");
 
   }
 }
