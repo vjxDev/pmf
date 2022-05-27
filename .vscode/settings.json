@@ -1,8 +1,6 @@
 {
   "java.project.referencedLibraries": {
-    "include": [
-      "lib/**/*.jar"
-    ],
+    "include": ["lib/**/*.jar"]
   },
   "files.defaultLanguage": "java",
   "java.project.sourcePaths": [
@@ -14,8 +12,5 @@
     "java/SPA1/K1",
     "java/SPA1/K3"
   ],
-  "cSpell.words": [
-    "SPAK",
-    "Stek"
-  ]
+  "cSpell.words": ["Kolokvijum", "SPAK", "Stek"]
 }

@@ -9,7 +9,6 @@ public class SPAK3Z2Test {
       queue.naKraj(line);
     }
     Svetovid.in(f).close();
-
     return queue;
   }
 
